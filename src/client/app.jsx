@@ -18,6 +18,8 @@ class App extends React.Component {
         this.onDecreaseBreak = this.onDecreaseBreak.bind(this);
         this.onDecreaseSession = this.onDecreaseSession.bind(this);
         this.onIncreaseSession = this.onIncreaseSession.bind(this);
+        this.onToggleInterval = this.onToggleInterval.bind(this);
+        this.onUpdateTimerMinute = this.onUpdateTimerMinute.bind(this);
     }
 
     onDecreaseBreak() {
@@ -71,6 +73,26 @@ class App extends React.Component {
             };
         });
     }
+
+    onUpdateTimerMinute() {
+        this.setState(prevState => {
+            return {
+                TimerMinute: prevState.TimerMinute - 1,
+            };
+        });
+    }
+
+    onToggleInterval(isSession) {
+        if (isSession) {
+            this.setState({
+                TimerMinute: this.state.Session,
+            });
+        } else {
+            this.setState({
+                TimerMinute: this.state.Break,
+            });
+        }
+    }
     render() {
         return (
             <div>
@@ -89,6 +111,8 @@ class App extends React.Component {
                 <Timer
                     TimerMinute={this.state.TimerMinute}
                     BreakTimer={this.state.BreakTimer}
+                    UpdateTimerMinute={this.onUpdateTimer}
+                    ToggleInterval={this.onToggleInterval}
                 />
             </div>
         );
