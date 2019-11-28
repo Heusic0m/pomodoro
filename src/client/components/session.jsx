@@ -4,9 +4,13 @@ function Session(props) {
     return (
         <div>
             <section>
-                <button type={"button"}>{"moins"}</button>
+                <button type={"button"} onClick={() => props.decreaseSession()}>
+                    {"moins"}
+                </button>
                 <p>{props.Session}</p>
-                <button type={"button"}>{"plus"}</button>
+                <button type={"button"} onClick={() => props.increaseSession()}>
+                    {"plus"}
+                </button>
             </section>
             <div>
                 <h2>{"Temps de session"}</h2>
