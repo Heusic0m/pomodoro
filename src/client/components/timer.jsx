@@ -1,5 +1,4 @@
 import React from "react";
-import Break from "./break";
 
 class Timer extends React.Component {
     constructor(props) {
@@ -17,9 +16,9 @@ class Timer extends React.Component {
     }
 
     play() {
-        let IntervalId = setInterval(this.DecreaseTimer, 1000);
+        const IntervalId = setInterval(this.DecreaseTimer, 1000);
         this.setState({
-            IntervalId: IntervalId,
+            IntervalId,
         });
     }
     stop() {
@@ -53,14 +52,12 @@ class Timer extends React.Component {
                 this.setState({
                     TimerSeconde: 59,
                 });
-                Break;
+                break;
             default:
-                this.setState(prevState => {
-                    return {
-                        TimerSeconde: prevState.TimerSeconde - 1,
-                    };
-                });
-                Break;
+                this.setState(prevState => ({
+                    TimerSeconde: prevState.TimerSeconde - 1,
+                }));
+                break;
         }
     }
     render() {
@@ -77,17 +74,17 @@ class Timer extends React.Component {
                     {this.state.TimerSeconde === 0
                         ? "00"
                         : this.state.TimerSeconde < 10
-                        ? `0${this.state.timerSeconde}`
+                        ? `0${this.state.TimerSeconde}`
                         : this.state.TimerSeconde}
                 </span>
                 <section className={"actions-timer"}>
-                    <button type={"button"} onClick={this.play}>
+                    <button type={"button"} onClick={() => this.play()}>
                         {"Play"}
                     </button>
-                    <button type={"button"} onClick={this.stop}>
+                    <button type={"button"} onClick={() => this.stop()}>
                         {"Stop"}
                     </button>
-                    <button type={"button"} onClick={this.restart}>
+                    <button type={"button"} onClick={() => this.restart()}>
                         {"Restart"}
                     </button>
                 </section>

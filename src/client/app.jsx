@@ -27,8 +27,11 @@ class App extends React.Component {
         return this.setState(prevState => {
             let tmp;
 
-            if (prevState.Break + 1 === 2) tmp = 60;
-            else tmp = prevState.Break - 1;
+            if (prevState.Break + 1 === 2) {
+                tmp = 60;
+            } else {
+                tmp = prevState.Break - 1;
+            }
 
             return {
                 Break: tmp,
@@ -39,8 +42,11 @@ class App extends React.Component {
         return this.setState(prevState => {
             let tmp;
 
-            if (prevState.Break + 1 > 60) tmp = 0;
-            else tmp = prevState.Break + 1;
+            if (prevState.Break + 1 > 60) {
+                tmp = 0;
+            } else {
+                tmp = prevState.Break + 1;
+            }
 
             return {
                 Break: tmp,
@@ -52,8 +58,11 @@ class App extends React.Component {
         return this.setState(prevState => {
             let tmp;
 
-            if (prevState.Session + 1 === 2) tmp = 60;
-            else tmp = prevState.Session - 1;
+            if (prevState.Session + 1 === 2) {
+                tmp = 60;
+            } else {
+                tmp = prevState.Session - 1;
+            }
 
             return {
                 Session: tmp,
@@ -65,8 +74,11 @@ class App extends React.Component {
         return this.setState(prevState => {
             let tmp;
 
-            if (prevState.Session + 1 > 60) tmp = 1;
-            else tmp = prevState.Session + 1;
+            if (prevState.Session + 1 > 60) {
+                tmp = 1;
+            } else {
+                tmp = prevState.Session + 1;
+            }
 
             return {
                 Session: tmp,
@@ -76,11 +88,9 @@ class App extends React.Component {
     }
 
     onUpdateTimerMinute() {
-        this.setState(prevState => {
-            return {
-                TimerMinute: prevState.TimerMinute - 1,
-            };
-        });
+        this.setState(prevState => ({
+            TimerMinute: prevState.TimerMinute - 1,
+        }));
     }
 
     onToggleInterval(isSession) {
